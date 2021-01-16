@@ -35,14 +35,7 @@
                 <button class="float-left mt-3 btn btn_color  py-0" [ngClass]="selectedLaunchYear  !== '2007' ? 'btn_color' : 'active'" (click)="yearSort('2007')">2007</button>
               </div>
             </div>
-            <!-- <div class="row m-0 ">
-              <div class="col__6 pr-2">
-                <button class=" float-right mt-3 btn btn_color  py-0" [ngClass]="selectedLaunchYear  !== '2006' ? 'btn_color' : 'active'" (click)="yearSort(2006)">2006</button>
-              </div>
-              <div class="col__6 pl-2">
-                <button class="float-left mt-3 btn btn_color  py-0" [ngClass]="selectedLaunchYear  !== '2007' ? 'btn_color' : 'active'" (click)="yearSort('2007')">2007</button>
-              </div>
-            </div> -->
+            
             <div class="row m-0 ">
               <div class="col__6 pr-2">
                 <button class=" float-right mt-3 btn btn_color  py-0" [ngClass]="selectedLaunchYear  !== '2008' ? 'btn_color' : 'active'" (click)="yearSort('2008')">2008</button>
@@ -141,7 +134,7 @@
     </div>
       <!-- mission Tiles -->
       <div class="col_9">
-        <div  class="row m-0">
+        <div *ngIf="spacexRawData.length" class="row m-0">
           <div *ngFor="let spaceData of spacexRawData; let i= index" class="col_6  px-2 mt-3 ">
             <div class="bg-white">
 
@@ -169,8 +162,8 @@
           </div>
           </div>
         </div>
-        <div>
-<h2 class="px-2 text-info mt-2">No Data, Please Select a Different value !!</h2>
+        <div *ngIf="!spacexRawData.length">
+<h2 class="px-2 text-info mt-2">{{emptyApi}}</h2>
         </div>
       </div>
     

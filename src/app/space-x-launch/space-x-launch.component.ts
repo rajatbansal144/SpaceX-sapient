@@ -9,8 +9,9 @@ import { ServiceService } from '../service.service';
 export class SpaceXLaunchComponent implements OnInit {
 
   constructor(private service: ServiceService) { }
-  empty = true;
-  spacexRawData
+  empty :boolean;
+  emptyApi = 'Please wait while we are fetching Results';
+  spacexRawData:any =[]
   spaceData;
   spaceData2;
   step;
@@ -18,43 +19,27 @@ export class SpaceXLaunchComponent implements OnInit {
   selectedLaunchYear='';
   successfulLaunchValue='';
   successfulLandValue='';
-  launchYear: Array<string> = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
   
 
   ngOnInit() {
 
-    this.service.getdata().subscribe((data) => {
-      console.log(data)
-      this.spaceData = data;
-      console.log(this.spaceData)
-      this.spaceData2 = this.spaceData;
-
+    
       this.getSpacexRawData();
-    });
+    
 
 
   }
 
   getSpacexRawData() {
-    console.log(this.launchYear[4]);
     this.service.getdata().subscribe((dataArray) => {
       this.spacexRawData = dataArray;
-         });
-         }
+      this.emptyApi = this.spacexRawData.length ? 'Please wait while we are fetching Results' : 'No results found Please Try again with other input combination';
+    }, (err) => this.emptyApi = 'Please Try again after sometime ');
+  }
 // Year Sort Filter
   yearSort(year) {
     
-    // this.spaceData = this.spaceData2;
-    // let yearFilter = this.spaceData.filter(function (data) {
-    //    return data.launch_year  == year;
-    // });
-    // if (yearFilter != '') {
-    //   this.spaceData = yearFilter;
-    //   this.empty = true;
-    // }
-    // if (yearFilter == '') {
-    //   this.empty = false;
-    // }
+   
     if (year !== this.previousSelectedYear) {
       this.selectedLaunchYear = year;
       this.previousSelectedYear = year;
@@ -67,25 +52,13 @@ export class SpaceXLaunchComponent implements OnInit {
     }
     this.service.launchYear = '&launch_year=' + this.selectedLaunchYear;
     this.getSpacexRawData();
-    // if(this.spacexRawData.length ==0){
-    //   this.empty= true
-    // }
-    // else{
-    //   this.empty= false
-    // }
-    // this.previousSelectedYear = year;
-  
+   
 
   }
 
 // Launch Success Filter
   launch(value) {
-    // this.empty = true;
-    // this.spaceData = this.spaceData2;
-    // let launchFilter = this.spaceData.filter(function (data1) {
-    //   return data1.launch_success == value;
-    // });
-    // this.spaceData = launchFilter;
+   
     if (this.successfulLaunchValue === value) {
       this.successfulLaunchValue = '';
     }
@@ -104,6 +77,6 @@ export class SpaceXLaunchComponent implements OnInit {
     else {
       this.successfulLandValue = value;
     }
-    this.service.launchSuccess = '&land_success' + '=' + this.successfulLandValue;
+    this.service.landSuccess = '&land_success' + '=' + this.successfulLandValue;
  this.getSpacexRawData();
 }}

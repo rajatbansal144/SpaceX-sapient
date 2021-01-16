@@ -17,7 +17,5 @@ export class ServiceService {
     console.log(environment.getSpacexData + this.launchSuccess + this.launchYear + this.landSuccess);
     return this.http.get(environment.getSpacexData + this.launchSuccess + this.launchYear + this.landSuccess);
   } 
-  // getdata(){
-  //   return this.http.get(this.missionData);
-  //  }
+  
 }
