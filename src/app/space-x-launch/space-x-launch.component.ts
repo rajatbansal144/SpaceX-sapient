@@ -12,9 +12,8 @@ export class SpaceXLaunchComponent implements OnInit {
   empty :boolean;
   emptyApi = 'Please wait while we are fetching Results';
   spacexRawData:any =[]
-  spaceData;
-  spaceData2;
   step;
+  stp;
   previousSelectedYear = '';
   selectedLaunchYear='';
   successfulLaunchValue='';
