@@ -5,8 +5,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Git Setup
 Clone the project using `git clone <path>`.
 
-## LightHouse Score
-![LightHouse Score](assets/images/score.JPG?raw=true"Lighthouse Score")
 
 ## Development server
 
