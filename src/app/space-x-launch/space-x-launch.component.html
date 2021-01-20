@@ -105,10 +105,10 @@
 
             <div class="row m-0 ">
               <div class="col__6 pr-2">
-                <button class=" float-right mt-3 btn  px-3 py-0"[ngClass]="successfulLaunchValue !== true ? 'btn_color' : 'active'" (click)="launch(true)">True</button>
+                <button class=" float-right mt-3 btn btn_color  px-3 py-0"  (click)="launch(true)"  [ngClass]="{'active': stp==='stp1'}" (click)="stp='stp1'">True</button>
               </div>
               <div class="col__6 pl-2">
-                <button class="float-left mt-3 btn btn_color px-3 py-0"[ngClass]="successfulLaunchValue !== false ? 'btn_color' : 'active'"(click)="launch(false)">False</button>
+                <button class="float-left mt-3 btn btn_color px-3 py-0" (click)="launch(false)"[ngClass]="{'active': stp==='stp2'}" (click)="stp='stp2'">False</button>
               </div>
             </div>
           </div>
@@ -121,10 +121,10 @@
 
             <div class="row m-0 mb-2">
               <div class="col__6 pr-2">
-                <button class=" float-right mt-3 btn btn_color px-3 py-0" [ngClass]="successfulLandValue !== true ? 'btn_color' : 'active'" (click)="land(true)">True</button>
+                <button class=" float-right mt-3 btn btn_color px-3 py-0" [ngClass]="{'active': step==='step20'}" (click)="step='step20'" (click)="land(true)">True</button>
               </div>
               <div class="col__6 pl-2 pb-3">
-                <button class="float-left mt-3 btn btn_color px-3 py-0" [ngClass]="successfulLandValue !== false ? 'btn_color' : 'active'" (click)="land(false)">False</button>
+                <button class="float-left mt-3 btn btn_color px-3 py-0" [ngClass]="{'active': step==='step21'}" (click)="step='step21'" (click)="land(false)">False</button>
               </div>
             </div>
           </div>
